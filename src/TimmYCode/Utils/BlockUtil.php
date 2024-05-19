@@ -36,7 +36,7 @@ class BlockUtil
 		for ($x = $vector1[0] - $searchRadiusX; $x < $vector1[0] + $searchRadiusX; $x++) {
 			for ($y = $vector1[1] - $searchRadiusY; $y < $vector1[1] + $searchRadiusY; $y++) {
 				for ($z = $vector1[2] - $searchRadiusZ; $z < $vector1[2] + $searchRadiusZ; $z++) {
-					if ($world->getBlockAt($x, $y, $z)->isSameType($block)) {
+					if ($world->getBlockAt($x, $y, $z)->getTypeId() === $block->getTypeId()) {
 						return true;
 					}
 				}
@@ -52,7 +52,7 @@ class BlockUtil
 		for ($x = $vector1[0] - $searchRadiusX; $x < $vector1[0] + $searchRadiusX; $x++) {
 			for ($y = $vector1[1] - $searchRadiusY; $y < $vector1[1] + $searchRadiusY; $y++) {
 				for ($z = $vector1[2] - $searchRadiusZ; $z < $vector1[2] + $searchRadiusZ; $z++) {
-					if (!$world->getBlockAt($x, $y, $z)->isSameType($block)) {
+					if ($world->getBlockAt($x, $y, $z)->getTypeId() === $block->getTypeId()) {
 						return true;
 					}
 				}

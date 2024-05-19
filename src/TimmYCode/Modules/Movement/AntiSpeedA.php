@@ -49,7 +49,7 @@ class AntiSpeedA extends ModuleBase implements Module
 			$this->yDistance = ($this->to[1] - $this->from[1]);
 			$this->distance = BlockUtil::calculateDistance($this->from, $this->to);
 
-			if (PlayerUtil::movementSpeedInfluenced($player) || !BlockUtil::blockAbove($this->to, $player->getWorld())->isSameType(VanillaBlocks::AIR()) || PlayerUtil::recentlyHurt($player) || PlayerUtil::recentlyRespawned($player)) {
+			if (PlayerUtil::movementSpeedInfluenced($player) || !BlockUtil::blockAbove($this->to, $player->getWorld())->getTypeId() === VanillaBlocks::AIR()->getTypeId() || PlayerUtil::recentlyHurt($player) || PlayerUtil::recentlyRespawned($player)) {
 				$this->from = array(PlayerUtil::getX($player), PlayerUtil::getY($player), PlayerUtil::getZ($player)); //resets fromDistance else it calculates wrong distance
 				return "Movement speed influenced";
 			}

@@ -60,7 +60,7 @@ class PlayerUtil
 
 	static function flyingInfluenced(Player $player): bool
 	{
-		return ($player->isFlying() || $player->isCreative() || $player->isGliding() || $player->isUnderwater() || BlockUtil::blockUnder(PlayerUtil::getPosition($player), $player->getWorld())->isSameType(VanillaBlocks::WATER()));
+		return ($player->isFlying() || $player->isCreative() || $player->isGliding() || $player->isUnderwater() || BlockUtil::blockUnder(PlayerUtil::getPosition($player), $player->getWorld())->getTypeId() === VanillaBlocks::WATER()->getTypeId());
 	}
 
 	static function combatInfluenced(Player $player): bool
@@ -83,7 +83,7 @@ class PlayerUtil
 		return ($player->isFlying() || $player->isCreative() || $player->isGliding() || $player->isInsideOfSolid() || $player->isUnderwater() ||
 			BlockUtil::blockAroundBlock(PlayerUtil::getPosition($player), $player->getWorld(), 2, 2, 2, VanillaBlocks::COBWEB())
 			|| BlockUtil::blockAroundBlock(PlayerUtil::getPosition($player), $player->getWorld(), 1, 1, 1, VanillaBlocks::LADDER())
-			|| BlockUtil::blockUnder(self::getPosition($player), $player->getWorld())->isSameType(VanillaBlocks::WATER())
+			|| BlockUtil::blockUnder(self::getPosition($player), $player->getWorld())->getTypeId() === VanillaBlocks::WATER()->getTypeId()
 			|| BlockUtil::noBlockAroundBlock(array(PlayerUtil::getX($player), PlayerUtil::getY($player) + 2, PlayerUtil::getZ($player)), $player->getWorld(), 1, 1, 1, VanillaBlocks::AIR()));
 	}
 
